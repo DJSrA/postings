@@ -2,3 +2,7 @@
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+<div><%= @company.name %></div>
+<%= link_to (@company[:id]), new_posting_path %>
+<%= debug @company %>
