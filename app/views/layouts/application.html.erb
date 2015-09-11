@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <%= render 'layouts/header' %>
+    <% for name in [:notice, :warning, :message, :error, :alert] %>
+      <% if flash[name] %>
+        <div role="message" id="<%= name %>">
+          <%= flash[name] %>
+        </div>
+      <% end %>
+    <% end %>
+  <div class="container body-container">
+    
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -1,10 +1,12 @@
 class CompaniesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = current_recruiter.companies
+    @companies = Company.all
+    @recent_companies =  @companies.order('updated_at desc').limit(4)
   end
 
   # GET /companies/1
@@ -14,7 +16,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = current_recruiter.companies.build
+    @company = Company.build
   end
 
   # GET /companies/1/edit
@@ -24,10 +26,11 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = current_recruiter.companies.build(company_params)
+    @company = Company.build(company_params)
     puts "company #{@company.inspect}"
     respond_to do |format|
-      if @company.save        
+      if @company.save
+        current_user.companies << @company
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
@@ -69,6 +72,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name)
+      params.require(:company).permit(:name, :function, :industry, :region, :market_cap, :ownership, :description)
     end
 end

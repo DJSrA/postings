@@ -1,0 +1,53 @@
+.job-post-listing {
+  margin-bottom: 20px;
+  height: 420px;
+  a:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+.all-post-container {
+  background-color: #F2F2F2;
+  padding:  15px;
+  margin-top: 200px;
+  .single-post-container {
+    height: 360px;
+    padding: 20px;
+    background-color: #E6E6E6;
+    .job-title-container {
+      font-size: 30px;
+      margin-bottom: 20px;
+      width: 60%;
+      box-sizing: border-box;
+    }
+    .job-description-container {
+      height: 120px;
+      padding: 0;
+    }
+    .job-filter-description-container {
+      padding: 0;
+      ul {
+        padding: 0;
+        li {
+          width: 19%;
+          display: inline-block;
+        }
+        .filter-option-selected {
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+    .image-like-post-container {
+      width: 39%;
+    }
+  }
+  .timestamp-container {
+    height: 60px;
+    background-color: #CCCCCC;
+    margin: 0;
+    padding: 20px 20px 0;
+    font-size: 16px;
+  }
+}

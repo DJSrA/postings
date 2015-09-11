@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :candidates
   resources :postings
   resources :companies
 
-  devise_for :recruiters
+  devise_for :users
 
-  devise_scope :recruiter do
-    authenticated :recruiter do
-      root 'companies#index', as: :authenticated_root
+  devise_scope :user do
+    authenticated :user do
+      root 'postings#index', as: :authenticated_root
     end
 
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
+  end
+
+  devise_scope :user do
+    get "/recruiters/sign_up" => "recruiters/registrations#new"
+    post "/recruiters/sign_up" => "recruiters/registrations#create"
   end
 
   root to: 'postings#index'

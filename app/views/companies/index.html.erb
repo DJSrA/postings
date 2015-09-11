@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Companies</h1>
-
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <div class="left-content-container col-md-9">
+      <div class="all-post-container">
+        <div class="navbar-right nav navbar-nav header-nav">
+          <button class="btn btn-default"><%= link_to "+ New Company", new_company_path %></button>
+        </div>
+        <h4><%= @companies.count %> Companies</h4>
+        <%= render partial: "company", collection: @companies %>
+      </div>
+    </div>
+    <div class="right-content-bar col-md-3">
+      <div class="all-post-container">
+        <%- @recent_companies.each do |company| -%>
+          <h1><%= company.name %></h1>
+        <% end %>
+      </div>
+    </div>
   </tbody>
 </table>
 
@@ -26,3 +26,4 @@
 <%= link_to 'New Company', new_company_path %>
 
 <%= debug @companies.inspect %>
+<%= debug current_user.companies.inspect %>

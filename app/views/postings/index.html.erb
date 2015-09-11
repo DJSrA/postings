@@ -1,31 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Postings</h1>
-
 <table>
   <thead>
     <tr>
-      <th>Recruiter</th>
-      <th>Companies</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @postings.each do |posting| %>
-      <tr>
-        <td><%= posting.title %></td>
-        <td><%= link_to 'Show', posting %></td>
-        <td><%= link_to 'Edit', edit_posting_path(posting) %></td>
-        <td><%= link_to 'Destroy', posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <div class="all-post-container">
+      <% if can? :create, Posting %>
+        <div class="navbar-right nav navbar-nav header-nav">
+          <button class="btn btn-default"><%= link_to "+ New Posting", new_posting_path %></button>
+        </div>
+      <% end -%>
+      <h4><%= @postings.count %> Postings</h4>
+      <%= render partial: "posting", collection: @postings %>
+    </div>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Posting', new_posting_path %>
+<% if can? :create, Posting %>
+  <%= link_to 'New posting', new_posting_path %>
+<% end %>
 
+<div class="col-md-12"><%# debug @postings.inspect %></div>
 
-<%= debug @postings.inspect %>
+<%= link_to "Recruiter Signup", recruiters_sign_up_path %>

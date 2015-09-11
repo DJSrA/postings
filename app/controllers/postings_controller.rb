@@ -1,10 +1,17 @@
 class PostingsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_posting, only: [:show, :edit, :update, :destroy]
+  # before_action :candidate,   only: :show
 
   # GET /postings
   # GET /postings.json
   def index
-    @postings = current_recruiter.postings
+    if current_user.recruiter?
+      @postings = current_user.recruiter_postings
+    else
+      @postings = Posting.all
+    end
+  
   end
 
   # GET /postings/1
@@ -14,7 +21,7 @@ class PostingsController < ApplicationController
 
   # GET /postings/new
   def new
-    @posting = current_recruiter.postings.build
+    @posting = current_user.recruiter_postings.build
   end
 
   # GET /postings/1/edit
@@ -24,11 +31,12 @@ class PostingsController < ApplicationController
   # POST /postings
   # POST /postings.json
   def create
-    @posting = current_recruiter.postings.build(posting_params)
-    puts "company #{@posting.inspect}"
-
+    @recruiter = current_user
+    @posting = @recruiter.recruiter_postings.build(posting_params)
+    puts "posting #{@posting.inspect}"
+    # fail
     respond_to do |format|
-      if @posting.save
+      if @posting.save        
         format.html { redirect_to @posting, notice: 'Posting was successfully created.' }
         format.json { render :show, status: :created, location: @posting }
       else
@@ -43,7 +51,7 @@ class PostingsController < ApplicationController
   def update
     respond_to do |format|
       if @posting.update(posting_params)
-        format.html { redirect_to @posting, notice: 'Posting was successfully updated.' }
+        format.html { redirect_to @posting, notice: 'posting was successfully updated.' }
         format.json { render :show, status: :ok, location: @posting }
       else
         format.html { render :edit }
@@ -57,7 +65,7 @@ class PostingsController < ApplicationController
   def destroy
     @posting.destroy
     respond_to do |format|
-      format.html { redirect_to postings_url, notice: 'Posting was successfully destroyed.' }
+      format.html { redirect_to postings_url, notice: 'posting was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +78,7 @@ class PostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def posting_params
-      params.require(:posting).permit(:recruiter_id, :companies_id, :title)
+      params.require(:posting).permit(:recruiter_id, :companies_id, :headline)
     end
+
 end

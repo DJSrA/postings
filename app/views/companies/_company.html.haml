@@ -1,0 +1,39 @@
+%li{:class => "job-post-listing"}
+  %div.single-post-container
+    %div{:class => "inline-block job-title-container inline-block"}
+      = link_to company.name, company_path(id: company)
+    %div{:class => "job-description-container col-md-12"}
+      = company.description
+    %div{:class => "image-like-post-container inline-block"}
+    %div{:class => "job-filter-description-container col-md-12"}
+      %ul
+        %li{:class => "filter-container"}
+          %div.filter-option-header
+            %h5 FUNCTION
+          %div.filter-option-selected
+            %p= company.function
+        %li{:class => "filter-container"}
+          %div.filter-option-header
+            %h5 INDUSTRY
+          %div.filter-option-selected
+            %p= company.industry     
+        %li{:class => "filter-container"}
+          %div.filter-option-header
+            %h5 REGION
+          %div.filter-option-selected
+            %p= company.region
+        %li{:class => "filter-container"}
+          %div.filter-option-header
+            %h5 MARKET CAP
+          %div.filter-option-selected
+            %p= company.market_cap
+        %li{:class => "filter-container"}
+          %div.filter-option-header
+            %h5 OWNERSHIP
+          %div.filter-option-selected
+            %p= company.ownership       
+  %div{:class => "timestamp-container col-md-12"}
+    %div{:class => "timestamp"}
+      Posted
+      = time_ago_in_words(company.created_at)
+      ago.

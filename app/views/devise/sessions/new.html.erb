@@ -1,0 +1,33 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="full-login-container">
+    <h1 class="login-header-text">Lead5</h1>
+
+    <div class="login-form-container">
+      <h3>Login to your account</h3>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <ul>
+            <li>
+              <%= f.label :email, "EMAIL ADDRESS:" %>
+              <%= f.input :email, required: false, autofocus: true, label: false %>
+            </li>
+            <li>
+              <%= f.label :email, "PASSWORD:" %>
+              <%= f.input :password, required: false, label: false %>
+            </li>
+            <li>
+              <%= f.label :email, "REMEMBER ME:" %>
+              <%= f.input :remember_me, label: false, as: :boolean if devise_mapping.rememberable? %>
+            </li>
+          </ul>
+          <div class="form-actions">
+            <%= f.button :submit, "Log in" %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>  
+
+    <span class="bottom-links"> New to Lead5? <%= render "devise/shared/links" %></span>
+  </div>
+</div>

@@ -1,4 +1,8 @@
-<%= simple_form_for @posting do |f| %>
-  <%= f.input :title %>
-  <%= f.button :submit %>
-<% end %>
+<div class="partial-container">
+  <div class="creation-container col-md-10 col-md-offset-1">
+    <%= simple_form_for @posting do |f| %>
+      <%= f.input :headline %>
+    <% end %>
+  </div>
+
+</div>
