@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910191208) do
+ActiveRecord::Schema.define(version: 20150914130942) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",   null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150910191208) do
     t.string   "market_cap"
     t.string   "ownership"
     t.text     "description"
+    t.string   "avatar"
   end
 
   add_index "companies", ["postings_id"], name: "index_companies_on_postings_id"

@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'haml'
 gem 'cancancan', '~> 1.10'
+gem 'carrierwave'
 
 gem 'jquery-rails'
 gem 'turbolinks'
