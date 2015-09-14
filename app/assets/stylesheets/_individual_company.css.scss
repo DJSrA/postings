@@ -1,0 +1,46 @@
+.company-description-header-container {
+  padding-top: 175px;
+  background-color: #E6E6E6;
+  position: absolute;
+  left: 0;
+  right: 0;
+  .job-filter-description-container {
+    background-color: #CCCCCC;
+    ul{
+      padding: 15px 0;
+      li {
+        width: 19%;
+        display: inline-block;
+        .filter-option-selected {
+          font-weight: 700;
+        }
+      }
+      
+    }
+  }
+  .job-post-listing {
+    height: 374px;
+    .header-content {
+      padding-bottom: 80px;
+      .left-content {
+        padding: 0;
+        .work-here-button {
+          margin-top: 20px;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 20px;
+        }
+      }
+      .center-content {
+        padding: 0 30px;
+      }
+      .right-content {
+        padding: 0;
+      }
+    }
+    
+  }
+  .job-description-container {
+    background-color: #ffffff;
+  }
+}

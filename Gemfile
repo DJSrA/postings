@@ -14,6 +14,8 @@ gem 'cancancan', '~> 1.10'
 gem 'activeadmin'
 gem 'draper'
 gem 'pundit'
+gem 'carrierwave'
+
 
 gem 'jquery-rails'
 gem 'turbolinks'

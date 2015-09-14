@@ -5,16 +5,38 @@
     <div class="left-content-container col-md-9">
       <div class="all-post-container">
         <div class="navbar-right nav navbar-nav header-nav">
-          <button class="btn btn-default"><%= link_to "+ New Company", new_company_path %></button>
+          <% if current_user.candidate! %>
+            <button class="btn btn-default"><%= link_to "+ New Company", new_company_path %></button>
+          <% end %>
         </div>
-        <h4><%= @companies.count %> Companies</h4>
+        <h4><%= @companies.count %> Businesses</h4>
         <%= render partial: "company", collection: @companies %>
       </div>
     </div>
     <div class="right-content-bar col-md-3">
-      <div class="all-post-container">
+      <div class="sidebar-all-post-container">
+        <h5 class="filter-option-header">HIRING ON LEAD5</h5>
         <%- @recent_companies.each do |company| -%>
-          <h1><%= company.name %></h1>
+          <li >
+            <div class="mini-single-post-container">
+              <div class="job-side-container">
+                <div class = "inline-block inline-block left-img col-md-3">
+                  <%= image_tag company.avatar.url %>
+                </div>
+                <div class="right-mini-content inline-block col-md-9">
+                  <div class ="job-title-text">
+                    <h5><%= company.name %></h5>
+                  </div>
+                  <div class="mini-description">
+                    <p>This is a mini-description</p>
+                  </div>
+                  <div class="mini-job-link">
+                    <%= link_to "VIEW JOBS >",postings_path%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
         <% end %>
       </div>
     </div>
@@ -22,8 +44,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Company', new_company_path %>
-
-<%= debug @companies.inspect %>
-<%= debug current_user.companies.inspect %>
