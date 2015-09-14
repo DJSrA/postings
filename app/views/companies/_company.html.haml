@@ -31,7 +31,9 @@
           %div.filter-option-header
             %h5 OWNERSHIP
           %div.filter-option-selected
-            %p= company.ownership       
+            %p= company.ownership   
+        %li{:class => "filter-container"}  
+          = image_tag company.avatar.url    
   %div{:class => "timestamp-container col-md-12"}
     %div{:class => "timestamp"}
       Posted

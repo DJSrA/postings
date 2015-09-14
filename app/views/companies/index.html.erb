@@ -14,7 +14,7 @@
     <div class="right-content-bar col-md-3">
       <div class="all-post-container">
         <%- @recent_companies.each do |company| -%>
-          <h1><%= company.name %></h1>
+          <%= image_tag(company.avatar.small_avatar) %>
         <% end %>
       </div>
     </div>
