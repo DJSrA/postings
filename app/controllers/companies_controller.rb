@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.order('updated_at desc')
     @recent_companies =  @companies.order('updated_at desc').limit(4)
   end
 

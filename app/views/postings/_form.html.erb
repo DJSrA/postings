@@ -2,7 +2,11 @@
   <div class="creation-container col-md-10 col-md-offset-1">
     <%= simple_form_for @posting do |f| %>
       <%= f.input :headline %>
+      <%= f.input :description %>
+      <%= f.file_field :avatar %>
+      <%= f.button :submit %>
     <% end %>
   </div>
+  <div class="col-md-12"><%= debug @posting.inspect %></div>
 
 </div>

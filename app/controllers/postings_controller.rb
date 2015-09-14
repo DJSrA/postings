@@ -1,6 +1,6 @@
 class PostingsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_posting, only: [:show, :edit, :update, :destroy]
+  before_action :set_posting, only: [:show, :edit, :update, :destroy, :create]
   # before_action :candidate,   only: :show
 
   # GET /postings

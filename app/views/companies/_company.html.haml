@@ -2,9 +2,9 @@
   %div.single-post-container
     %div{:class => "inline-block job-title-container inline-block"}
       = link_to company.name, company_path(id: company)
-    %div{:class => "job-description-container col-md-12"}
-      = company.description
+
     %div{:class => "image-like-post-container inline-block"}
+      = image_tag company.avatar.url    
     %div{:class => "job-filter-description-container col-md-12"}
       %ul
         %li{:class => "filter-container"}
@@ -32,10 +32,5 @@
             %h5 OWNERSHIP
           %div.filter-option-selected
             %p= company.ownership   
-        %li{:class => "filter-container"}  
-          = image_tag company.avatar.url    
   %div{:class => "timestamp-container col-md-12"}
-    %div{:class => "timestamp"}
-      Posted
-      = time_ago_in_words(company.created_at)
-      ago.
+    = link_to "View Company >", company_path(id: company), {:class => "view-company btn"}
