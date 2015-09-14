@@ -9,27 +9,37 @@
 
 .all-post-container {
   background-color: #F2F2F2;
-  padding:  15px;
+  padding:  15px 15px 15px;
   margin-top: 200px;
+  h4 {
+    padding-bottom: 15px;
+    color: #747474;
+    letter-spacing: 1px;
+  }
   .single-post-container {
-    height: 360px;
+    height: 340px;
     padding: 20px;
     background-color: #E6E6E6;
     .job-title-container {
       font-size: 30px;
       margin-bottom: 20px;
       width: 60%;
+      vertical-align: top;
       box-sizing: border-box;
+      a {
+        color: inherit;
+      }
     }
     .job-description-container {
       height: 120px;
       padding: 0;
     }
     .job-filter-description-container {
-      padding: 0;
+      padding: 50px 0 0;
       ul {
         padding: 0;
         li {
+          vertical-align: top;
           width: 19%;
           display: inline-block;
         }
@@ -41,13 +51,59 @@
     }
     .image-like-post-container {
       width: 39%;
+      img {
+        max-height: 140px;
+      }
     }
   }
   .timestamp-container {
-    height: 60px;
     background-color: #CCCCCC;
     margin: 0;
-    padding: 20px 20px 0;
+    padding: 15px 20px;
     font-size: 16px;
+    text-align: right;
+    .view-company {
+      background-color: #B3B3B3;
+      height: 43px;
+      width: 160px;
+      font-size: 17px;
+      color: inherit;
+    }
   }
+}
+
+
+.sidebar-all-post-container {
+  background-color: #E6E6E6;
+  padding:  15px;
+  margin-top: 200px;
+}
+.mini-single-post-container {
+  height: 87px;
+  padding: 15px;
+  background-color: #E6E6E6;
+  .left-img {
+    height: 50px;
+    background-color: #ffffff;
+    padding: 0;
+    img {
+      max-width: 100%;
+    }
+      
+  }
+  .right-mini-content {
+    padding: 0 0 0 10px;
+    h5 {
+      margin: 0;
+    }
+    p {
+      font-size: 11px;
+      margin: 0;
+    }
+    a {
+      color: #88D2DB;
+      font-size: 11px;
+    }
+  }
+  
 }

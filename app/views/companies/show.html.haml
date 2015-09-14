@@ -1,12 +1,16 @@
-%li{:class => "job-post-listing"}
-  %div.single-post-container
-    %div{:class => "inline-block job-title-container inline-block"}
-      = @company.name
-    %div{:class => "job-description-container col-md-12"}
-      = @company.description
-    %div{:class => "image-like-post-container inline-block"}
+%div.company-description-header-container
+  %li{:class => "job-post-listing"}
+    %div{:class => "header-content col-md-10 col-md-offset-1"}
+      %div{:class => "left-content col-md-3"}
+        = image_tag @company.avatar.url    
+        %button{:class => "work-here-button btn"}
+          I WORK HERE
+      %div{:class =>"center-content col-md-6"}
+        %div{:class => "inline-block job-title-container inline-block"}
+          = @company.name
+      %div{:class => "right-content col-md-3"}    
     %div{:class => "job-filter-description-container col-md-12"}
-      %ul
+      %ul{:class => "col-md-10 col-md-offset-1"}
         %li{:class => "filter-container"}
           %div.filter-option-header
             %h5 FUNCTION
@@ -31,11 +35,6 @@
           %div.filter-option-header
             %h5 OWNERSHIP
           %div.filter-option-selected
-            %p= @company.ownership    
-        %li{:class => "filter-container"}  
-          = image_tag @company.avatar.url    
-  %div{:class => "timestamp-container col-md-12"}
-    %div{:class => "timestamp"}
-      Posted
-      = time_ago_in_words(@company.created_at)
-      ago.
+            %p= @company.ownership   
+  %div{:class => "job-description-container col-md-10 col-md-offset-1"}
+    = @company.description

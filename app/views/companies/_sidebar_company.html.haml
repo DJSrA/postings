@@ -1,4 +1,7 @@
 %li{:class => "job-post-listing"}
   %div.single-post-container
-    %div{:class => "inline-block job-title-container inline-block"}
-      = image_tag @company.avatar.url    
+    %div.job-side-container
+      %div{:class => "inline-block job-title-container inline-block left-img"}
+        = image_tag @company.avatar.url    
+      %div{:class => "job-title-text"}
+        %h5 @company.name
