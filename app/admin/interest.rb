@@ -1,6 +1,6 @@
-ActiveAdmin.register Posting do
+ActiveAdmin.register Interest do
 
-  permit_params :title, :headline, :description, :job_type, :industry, :region, :ownership, :market_cap, :publisher_id, candidate_ids: []
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

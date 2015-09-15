@@ -10,6 +10,7 @@
         <li> <%= link_to "log out", destroy_user_session_path, :method => :delete %></li>
       </ul>
       <div class="navbar-right nav navbar-nav header-nav">
+        <%= link_to current_user, edit_user_registration_path %>
         <button class="btn btn-default"><%= link_to "+ New Post", new_posting_path %></button
       </div>
     </nav>

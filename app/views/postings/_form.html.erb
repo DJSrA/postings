@@ -3,6 +3,17 @@
     <%= simple_form_for @posting do |f| %>
       <%= f.input :headline %>
       <%= f.input :description %>
+      <%= f.label :job_type %>
+      <%= f.select :job_type, ['General Management', 'Finance & Operations', 'Legal & Human Resources', 'Sales & Marketing', 'Information Technology']%>
+      <%= f.label :industry %>
+      <%= f.select :industry, ['Consumer', 'Financial', 'Healthcare', 'Industrial', 'Technology']%>
+      <%= f.label :region %>
+      <%= f.select :region, ['Northeast', 'Southeast', 'Southwest', 'West', 'Midwest']%>
+      <%= f.label :market_cap %>
+      <%= f.select :market_cap, ['Large-Cap', 'Mid-Cap', 'Small-Cap', 'Micro-Cap', 'Start-Up']%>
+      <%= f.label :ownership %>
+      <%= f.select :ownership, ['Public', 'Private', 'Private PE', 'Private VC', 'Non-Profit']%>      
+      <%= f.select :company_id, @companies %>
       <%= f.file_field :avatar %>
       <%= f.button :submit %>
     <% end %>
