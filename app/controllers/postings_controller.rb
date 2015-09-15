@@ -1,15 +1,17 @@
 class PostingsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_posting, only: [:show, :edit, :update, :destroy, :create]
+  before_action :set_posting, only: [:show, :edit, :update, :destroy]
   # before_action :candidate,   only: :show
 
   # GET /postings
   # GET /postings.json
   def index
+    @recent_companies =  Company.order('updated_at desc').limit(4)
     if current_user.recruiter?
       @postings = current_user.recruiter_postings
     else
-      @postings = Posting.all
+      @postings = Posting.order('updated_at desc')
+
     end
   
   end
@@ -22,6 +24,7 @@ class PostingsController < ApplicationController
   # GET /postings/new
   def new
     @posting = current_user.recruiter_postings.build
+    @companies = Company.all
   end
 
   # GET /postings/1/edit
@@ -78,7 +81,8 @@ class PostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def posting_params
-      params.require(:posting).permit(:recruiter_id, :companies_id, :headline)
+      params.require(:posting).permit(:recruiter_id, :companies_id, :headline, :job_type, :industry, :region, :market_cap, :ownership, :description, :avatar)
+
     end
 
 end

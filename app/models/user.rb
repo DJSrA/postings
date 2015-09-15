@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_many :candidate_postings, class_name: "Posting", through: :interests
   has_many :recruiter_postings, class_name: "Posting", foreign_key: :recruiter_id
   enum role: [:candidate, :recruiter, :admin]
+
+  def to_s
+  "#{email}"
+  end
 end
