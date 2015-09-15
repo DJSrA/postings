@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tbody>
+    <div class="left-content-container col-md-9">
+      <div class="all-post-container">
+        <div class="navbar-right nav navbar-nav header-nav">
+          <% if current_user.candidate! %>
+            <button class="btn btn-default"><%= link_to "+ New posting", new_posting_path %></button>
+          <% end %>
+        </div>
+        <%- @recruiters.each do |recruiter| -%>
+          <h1><%= link_to recruiter.email, recruiters_path(id: recruiter) %></h1>
+          <%= recruiter.recruiter_postings.count %>
+        <% end %>
+      </div>
+    </div>
+  </tbody>
+</table>

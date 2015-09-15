@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'postings#index', as: :authenticated_root
+      get "recruiters" => "recruiters#index"
+      get "recruiters(.:format)" => "recruiters#show"
     end
 
     unauthenticated do
